@@ -10,12 +10,67 @@ import UIKit
 import RxSwift
 
 class ViewController: UIViewController {
-
+    
+    // MARK: UIVariables
+    private let containerImageView = UIImageView()
+    private let filterButton = UIButton()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        setupViews()
+        setupConstraints()
     }
+    
+    // MARK: Private
+    @objc private func addImage() {
+        let nav = UINavigationController()
+        let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
+        nav.viewControllers = [ImagesCollectionView(collectionViewLayout: layout)]
+        
+        self.navigationController?.present(nav, animated: true, completion: nil)
+    }
+}
 
-
+extension ViewController {
+    private func setupViews() {
+        setupNavigationController()
+        setupMainView()
+        setupContainerImageView()
+        setupButton()
+    }
+    
+    private func setupButton() {
+        filterButton.setTitle("Apply filter" , for: .normal)
+        filterButton.setTitleColor(.systemBlue, for: .normal)
+        filterButton.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(filterButton)
+    }
+    
+    private func setupContainerImageView() {
+        containerImageView.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(containerImageView)
+    }
+    
+    private func setupNavigationController() {
+        self.navigationController?.navigationBar.prefersLargeTitles = true
+        self.navigationItem.title = "Images Filters"
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addImage))
+    }
+    
+    private func setupMainView() {
+        self.view.backgroundColor = .white
+    }
+    
+    private func setupConstraints() {
+        // ContainerImageView
+        containerImageView.topAnchor.constraint(equalTo: view.layoutMarginsGuide.topAnchor).isActive = true
+        containerImageView.widthAnchor.constraint(equalTo: view.widthAnchor).isActive = true
+        containerImageView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.75).isActive = true
+        containerImageView.backgroundColor = .yellow
+        
+        // FilterButton
+        filterButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        filterButton.topAnchor.constraint(equalTo: containerImageView.bottomAnchor, constant: 20).isActive = true
+    }
 }
 
