@@ -8,8 +8,13 @@
 
 import UIKit
 import Photos
+import RxSwift
 
 class ImagesCollectionView: UICollectionViewController {
+    
+    var selectedPhoto: Observable<UIImage> {
+        return selectedPhotoSubject.asObservable()
+    }
     
     override init(collectionViewLayout layout: UICollectionViewLayout) {
         super.init(collectionViewLayout: layout)
@@ -23,9 +28,26 @@ class ImagesCollectionView: UICollectionViewController {
     
     // MARK: Private
     private var images = [PHAsset]()
+    private let selectedPhotoSubject = PublishSubject<UIImage>()
 }
 
 extension ImagesCollectionView {
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let selectedAsset = self.images[indexPath.row]
+        PHImageManager.default().requestImage(for: selectedAsset, targetSize: CGSize(width: 400, height: 400), contentMode: .aspectFit, options: nil) { [weak self] image, info in
+            guard let info = info else  { return }
+            
+            let isDegradeImage = info["PHImageResultDegradeKey"] as! Bool
+            
+            if !isDegradeImage {
+                if let image = image {
+                    self?.selectedPhotoSubject.onNext(image)
+                    self?.dismiss(animated: true, completion: nil)
+                }
+            }
+        }
+    }
+    
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
@@ -35,7 +57,22 @@ extension ImagesCollectionView {
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "imageCell", for: indexPath) as? ImageCellCollectionCell else { fatalError("ImageCellCollectionCell not found") }
         
+        let asset = images[indexPath.row]
+        let manager = PHImageManager.default()
+
+        manager.requestImage(for: asset, targetSize: CGSize(width: 400, height: 400), contentMode: .aspectFit, options: nil) { image, error in
+            
+            DispatchQueue.main.async {
+                if let photo = image {
+                    cell.imageCellView.image = photo
+                }
+                
+            }
+        }
+        
+        return cell
     }
 }
 
@@ -49,7 +86,9 @@ extension ImagesCollectionView {
                     self?.images.append(object)
                 }
                 self?.images.reverse()
-                self?.collectionView.reloadData()
+                DispatchQueue.main.async {
+                    self?.collectionView.reloadData()
+                }
             }
         }
     }
@@ -57,6 +96,7 @@ extension ImagesCollectionView {
 
 extension ImagesCollectionView {
     private func setupViews() {
+        collectionView.register(ImageCellCollectionCell.self, forCellWithReuseIdentifier: "imageCell")
         self.collectionView.backgroundColor = .white
     }
 }

@@ -9,7 +9,7 @@
 import UIKit
 
 class ImageCellCollectionCell: UICollectionViewCell {
-    private var imageCellView = UIImageView()
+    var imageCellView = UIImageView()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -34,8 +34,8 @@ extension ImageCellCollectionCell {
     
     private func setupConstraints() {
         // imageCellView
-        imageCellView.heightAnchor.constraint(equalToConstant: 60).isActive = true
-        imageCellView.widthAnchor.constraint(equalToConstant: 60).isActive = true
+        //imageCellView.heightAnchor.constraint(equalToConstant: 60).isActive = true
+        //imageCellView.widthAnchor.constraint(equalToConstant: 60).isActive = true
         imageCellView.topAnchor.constraint(equalTo: contentView.topAnchor).isActive = true
         imageCellView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor).isActive = true
         imageCellView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor).isActive = true
