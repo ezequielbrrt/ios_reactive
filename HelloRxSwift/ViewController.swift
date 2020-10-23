@@ -29,7 +29,11 @@ class ViewController: UIViewController {
         let photosViewController = ImagesCollectionView(collectionViewLayout: layout)
         
         photosViewController.selectedPhoto.subscribe(onNext: { [weak self] photo in
-            self?.containerImageView.image = photo
+            DispatchQueue.main.async {
+                self?.containerImageView.image = photo
+                self?.filterButton.isHidden = false
+            }
+            
         }).disposed(by: disposeBag)
         
         nav.viewControllers = [photosViewController]
@@ -48,6 +52,7 @@ extension ViewController {
     }
     
     private func setupButton() {
+        filterButton.isHidden = true
         filterButton.setTitle("Apply filter" , for: .normal)
         filterButton.setTitleColor(.systemBlue, for: .normal)
         filterButton.translatesAutoresizingMaskIntoConstraints = false

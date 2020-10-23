@@ -62,6 +62,7 @@ extension ImagesCollectionView {
         let asset = images[indexPath.row]
         let manager = PHImageManager.default()
 
+        cell.imageCellView.image = nil
         manager.requestImage(for: asset, targetSize: CGSize(width: 400, height: 400), contentMode: .aspectFit, options: nil) { image, error in
             
             DispatchQueue.main.async {
