@@ -15,6 +15,7 @@ class ViewController: UIViewController {
     private let containerImageView = UIImageView()
     private let filterButton = UIButton()
     
+
     override func viewDidLoad() {
         super.viewDidLoad()
         setupViews()
@@ -25,10 +26,17 @@ class ViewController: UIViewController {
     @objc private func addImage() {
         let nav = UINavigationController()
         let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
-        nav.viewControllers = [ImagesCollectionView(collectionViewLayout: layout)]
+        let photosViewController = ImagesCollectionView(collectionViewLayout: layout)
         
+        photosViewController.selectedPhoto.subscribe(onNext: { [weak self] photo in
+            self?.containerImageView.image = photo
+        }).disposed(by: disposeBag)
+        
+        nav.viewControllers = [photosViewController]
         self.navigationController?.present(nav, animated: true, completion: nil)
     }
+    
+    private var disposeBag = DisposeBag()
 }
 
 extension ViewController {

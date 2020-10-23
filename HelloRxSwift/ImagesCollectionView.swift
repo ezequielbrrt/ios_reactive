@@ -37,7 +37,7 @@ extension ImagesCollectionView {
         PHImageManager.default().requestImage(for: selectedAsset, targetSize: CGSize(width: 400, height: 400), contentMode: .aspectFit, options: nil) { [weak self] image, info in
             guard let info = info else  { return }
             
-            let isDegradeImage = info["PHImageResultDegradeKey"] as! Bool
+            let isDegradeImage = info["PHImageResultIsDegradedKey"] as! Bool
             
             if !isDegradeImage {
                 if let image = image {
