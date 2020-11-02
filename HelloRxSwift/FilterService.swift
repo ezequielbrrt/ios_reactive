@@ -18,11 +18,18 @@ class FilterService {
     }
     
     func applyFilter(to inputImage: UIImage, completion: @escaping((UIImage) -> ())) {
-        let filter = CIFilter(name: "CICMYKHalftone")
-        filter?.setValue(0.5, forKey: kCIInputWidthKey)
-        
-        if let sourceImage = CIImage(image: inputImage) {
+        if let filter = CIFilter(name: "CICMYKHalftone") {
+            filter.setValue(0.5, forKey: kCIInputWidthKey)
             
+            if let sourceImage = CIImage(image: inputImage) {
+                filter.setValue(sourceImage, forKey: kCIInputImageKey)
+                if let cgimg = self.context.createCGImage(filter.outputImage!, from: filter.outputImage!.extent) {
+                    
+                    let processedImage = UIImage(cgImage: cgimg, scale: inputImage.scale , orientation: inputImage.imageOrientation)
+                    completion(processedImage)
+                }
+            }
         }
+        
     }
 }

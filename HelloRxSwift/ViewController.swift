@@ -14,7 +14,6 @@ class ViewController: UIViewController {
     // MARK: UIVariables
     private let containerImageView = UIImageView()
     private let filterButton = UIButton()
-    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,6 +39,15 @@ class ViewController: UIViewController {
         self.navigationController?.present(nav, animated: true, completion: nil)
     }
     
+    @objc private func applyFilterButtonPressed() {
+        guard let sourceImage = self.containerImageView.image else { return }
+        FilterService().applyFilter(to: sourceImage) { filteredImage in
+            DispatchQueue.main.async { [weak self] in
+                self?.containerImageView.image = filteredImage
+            }
+        }
+    }
+    
     private var disposeBag = DisposeBag()
 }
 
@@ -52,6 +60,7 @@ extension ViewController {
     }
     
     private func setupButton() {
+        filterButton.addTarget(self, action: #selector(applyFilterButtonPressed), for: .touchUpInside)
         filterButton.isHidden = true
         filterButton.setTitle("Apply filter" , for: .normal)
         filterButton.setTitleColor(.systemBlue, for: .normal)
