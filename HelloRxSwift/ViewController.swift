@@ -41,11 +41,6 @@ class ViewController: UIViewController {
     
     @objc private func applyFilterButtonPressed() {
         guard let sourceImage = self.containerImageView.image else { return }
-//        FilterService().applyFilter(to: sourceImage) { filteredImage in
-//            DispatchQueue.main.async { [weak self] in
-//                self?.containerImageView.image = filteredImage
-//            }
-//        }
         FilterService().applyFilter(to: sourceImage).subscribe(onNext: { filteredImage in
             DispatchQueue.main.async { [weak self] in
                 self?.containerImageView.image = filteredImage

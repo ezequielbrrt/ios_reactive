@@ -20,6 +20,7 @@
 
 /* Begin PBXFileReference section */
 		3769D135254377900056FAF5 /* FilterService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterService.swift; sourceTree = "<group>"; };
+		3781486326718676008E91EC /* RxSwiftTest.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = RxSwiftTest.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		37FAD7F82527A93D00A3D497 /* ImageCellCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCellCollectionCell.swift; sourceTree = "<group>"; };
 		62F2CD4DE6743EA585D11B13 /* Pods-HelloRxSwift.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HelloRxSwift.release.xcconfig"; path = "Target Support Files/Pods-HelloRxSwift/Pods-HelloRxSwift.release.xcconfig"; sourceTree = "<group>"; };
 		8FC6A0B27A3FA73FD65D2132 /* Pods_HelloRxSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HelloRxSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -31,7 +32,6 @@
 		93307754248EBA3A00CA1FF5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		93307757248EBA3A00CA1FF5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		93307759248EBA3A00CA1FF5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		93307761248EBE6C00CA1FF5 /* RxSwiftPlayground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = RxSwiftPlayground.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		EF113DFE60C596EE05C26B2D /* Pods-HelloRxSwift.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HelloRxSwift.debug.xcconfig"; path = "Target Support Files/Pods-HelloRxSwift/Pods-HelloRxSwift.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -76,7 +76,6 @@
 		9330774A248EBA3A00CA1FF5 /* HelloRxSwift */ = {
 			isa = PBXGroup;
 			children = (
-				93307761248EBE6C00CA1FF5 /* RxSwiftPlayground.playground */,
 				9330774B248EBA3A00CA1FF5 /* AppDelegate.swift */,
 				9330774D248EBA3A00CA1FF5 /* SceneDelegate.swift */,
 				9330774F248EBA3A00CA1FF5 /* ViewController.swift */,
@@ -84,6 +83,7 @@
 				93307756248EBA3A00CA1FF5 /* LaunchScreen.storyboard */,
 				93307759248EBA3A00CA1FF5 /* Info.plist */,
 				9301FF7F24D0F7640008C98A /* ImagesCollectionView.swift */,
+				3781486326718676008E91EC /* RxSwiftTest.playground */,
 				37FAD7F82527A93D00A3D497 /* ImageCellCollectionCell.swift */,
 				3769D135254377900056FAF5 /* FilterService.swift */,
 			);
