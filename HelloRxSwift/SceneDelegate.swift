@@ -20,9 +20,14 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         
         let nav = UINavigationController()
-        let mainView = ViewController()
-        nav.viewControllers = [mainView]
+        //let mainView = ViewController()
+        //let mainView = TestListViewController()
         
+        
+        let storyBoard = UIStoryboard(name: "TodoList", bundle: nil)
+        let mainView = storyBoard.instantiateViewController(identifier: "TestListViewController")
+
+        nav.viewControllers = [mainView]
         window = UIWindow(frame: windowScene.coordinateSpace.bounds)
         window?.windowScene = windowScene
         window?.rootViewController = nav
