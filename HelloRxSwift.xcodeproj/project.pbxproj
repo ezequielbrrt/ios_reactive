@@ -10,6 +10,7 @@
 		3769D136254377900056FAF5 /* FilterService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3769D135254377900056FAF5 /* FilterService.swift */; };
 		378148662671918F008E91EC /* TodoList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 378148652671918F008E91EC /* TodoList.storyboard */; };
 		3781486A267191F9008E91EC /* TestListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37814869267191F9008E91EC /* TestListViewController.swift */; };
+		37C83B6D2681681B008272A1 /* NewsApp.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 37C83B6C2681681B008272A1 /* NewsApp.storyboard */; };
 		37E67FC22672E5720079432C /* AddTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37E67FC12672E5720079432C /* AddTaskViewController.swift */; };
 		37E67FC52672E6790079432C /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37E67FC42672E6790079432C /* Task.swift */; };
 		37FAD7F92527A93D00A3D497 /* ImageCellCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37FAD7F82527A93D00A3D497 /* ImageCellCollectionCell.swift */; };
@@ -27,6 +28,7 @@
 		3781486326718676008E91EC /* RxSwiftTest.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = RxSwiftTest.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		378148652671918F008E91EC /* TodoList.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TodoList.storyboard; sourceTree = "<group>"; };
 		37814869267191F9008E91EC /* TestListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestListViewController.swift; sourceTree = "<group>"; };
+		37C83B6C2681681B008272A1 /* NewsApp.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = NewsApp.storyboard; sourceTree = "<group>"; };
 		37E67FC12672E5720079432C /* AddTaskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTaskViewController.swift; sourceTree = "<group>"; };
 		37E67FC42672E6790079432C /* Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
 		37FAD7F82527A93D00A3D497 /* ImageCellCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCellCollectionCell.swift; sourceTree = "<group>"; };
@@ -85,6 +87,14 @@
 			path = Controllers;
 			sourceTree = "<group>";
 		};
+		37C83B6B2681669B008272A1 /* NewsApp */ = {
+			isa = PBXGroup;
+			children = (
+				37C83B6C2681681B008272A1 /* NewsApp.storyboard */,
+			);
+			path = NewsApp;
+			sourceTree = "<group>";
+		};
 		37E67FC32672E66F0079432C /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -122,6 +132,7 @@
 		9330774A248EBA3A00CA1FF5 /* HelloRxSwift */ = {
 			isa = PBXGroup;
 			children = (
+				37C83B6B2681669B008272A1 /* NewsApp */,
 				3781486726719195008E91EC /* TodoList */,
 				3781486426719156008E91EC /* ImageFilter */,
 				9330774B248EBA3A00CA1FF5 /* AppDelegate.swift */,
@@ -206,6 +217,7 @@
 				93307758248EBA3A00CA1FF5 /* LaunchScreen.storyboard in Resources */,
 				378148662671918F008E91EC /* TodoList.storyboard in Resources */,
 				93307755248EBA3A00CA1FF5 /* Assets.xcassets in Resources */,
+				37C83B6D2681681B008272A1 /* NewsApp.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

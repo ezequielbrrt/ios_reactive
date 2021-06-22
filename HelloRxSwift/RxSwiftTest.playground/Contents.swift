@@ -2,6 +2,7 @@
   
 import UIKit
 import RxSwift
+import RxCocoa
 import PlaygroundSupport
 
 /*
@@ -124,3 +125,72 @@ func takeUntil() {
     trigger.onNext("X")
     subject.onNext("3")
 }
+
+
+/**
+    TRANSFORMING OPERATORS
+ */
+
+
+func array() {
+    Observable.of(1,2,3,4,5)
+        .toArray()
+        .subscribe(onNext: {
+            print($0)
+        }).disposed(by: disposeBag)
+}
+
+func map() {
+    Observable.of(1,2,3,4,5)
+        .map {
+            $0 * 2
+        }
+        .subscribe(onNext: {
+            print($0)
+        }).disposed(by: disposeBag)
+}
+
+
+struct Student {
+    var score: BehaviorRelay<Int>
+}
+
+func flatMap() {
+    let john = Student(score: BehaviorRelay(value: 75))
+    let mary = Student(score: BehaviorRelay(value: 95))
+    
+    let student = PublishSubject<Student>()
+    
+    student.asObserver()
+        .flatMap { $0.score.asObservable() }
+        .subscribe(onNext: {
+          print($0)
+        }).disposed(by: disposeBag)
+    
+    student.onNext(john)
+    john.score.accept(100)
+    student.onNext(mary)
+    mary.score.accept(80)
+    john.score.accept(43)
+}
+
+
+func flatMapLatest() {
+    let john = Student(score: BehaviorRelay(value: 75))
+    let mary = Student(score: BehaviorRelay(value: 95))
+    
+    let student = PublishSubject<Student>()
+    
+    student.asObserver()
+        .flatMapLatest { $0.score.asObservable() }
+        .subscribe(onNext: {
+          print($0)
+        }).disposed(by: disposeBag)
+    
+    student.onNext(john)
+    john.score.accept(100)
+    student.onNext(mary)
+    mary.score.accept(80)
+    john.score.accept(43)
+}
+
